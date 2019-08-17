@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class ScheduledService {
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 60000)
     public void printNowDate(){
-        System.out.println(new Date());
+        System.out.println("Now Time is :"+new Date());
     }
 
     /**
