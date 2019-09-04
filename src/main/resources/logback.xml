@@ -2,8 +2,8 @@
 <configuration debug="true" scan="true" scanPeriod="60 seconds" packagingData="true">
 
     <contextName>logback</contextName>
-    <property resource="application.properties"/>
-    <springProperty scope="context" name="LOG_HOME" source="logHome"/>
+    <!--<property resource="application.properties"/>-->
+    <!--<springProperty scope="context" name="LOG_HOME" source="logHome"/>-->
 
     <!-- 标准输出：console -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -14,9 +14,9 @@
 
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/logan.log</file>
+        <file>logs/logan.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/logan.%d{yyyyMMddHHmm}.log</FileNamePattern>
+            <FileNamePattern>logs/logan.%d{yyyyMMddHHmm}.log</FileNamePattern>
         </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -29,9 +29,9 @@
 
     <!-- 出错日志 appender  -->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/loganERROR.log</file>
+        <file>logs/loganERROR.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/loganERROR.%d{yyyyMMddHHmm}.log</fileNamePattern>
+            <fileNamePattern>logs/loganERROR.%d{yyyyMMddHHmm}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
