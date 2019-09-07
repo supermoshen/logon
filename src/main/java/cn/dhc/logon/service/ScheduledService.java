@@ -1,5 +1,7 @@
 package cn.dhc.logon.service;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -15,20 +17,22 @@ import java.util.concurrent.TimeUnit;
  * @date : 2019-07-30
  */
 @Service
+@Slf4j
 public class ScheduledService {
-
-    @Scheduled(fixedRate = 60000)
-    public void printNowDate(){
-        System.out.println("Now Time is :"+new Date());
+    @Async
+    @Scheduled(fixedRate = 1000)
+    public void printNowDate() {
+        log.info("Now Time is :" + new Date());
     }
 
     /**
      * execute at 12:00 clock every day
      */
+    @Async
     @Scheduled(cron = "0 0 12 ? * *")
-    public void printFormatTime(){
+    public void printFormatTime() {
         Instant instant = Instant.now().plusMillis(TimeUnit.HOURS.toMillis(8));
         LocalDate localDate = LocalDate.now();
-        System.out.println("instant:"+instant+"|localDate:"+localDate);
+        log.info("instant:" + instant + "|localDate:" + localDate);
     }
 }
