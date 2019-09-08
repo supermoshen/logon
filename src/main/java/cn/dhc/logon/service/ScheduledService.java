@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class ScheduledService {
     @Async
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 10000)
     public void printNowDate() {
         log.info("Now Time is :" + new Date());
     }

@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,10 +17,10 @@ import java.util.Date;
 @Table(name = "USER")
 @Data
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
     @Column(name = "username", unique = true, nullable = false, length = 64)
     private String username;

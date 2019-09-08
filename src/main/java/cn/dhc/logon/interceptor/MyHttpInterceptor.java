@@ -47,8 +47,9 @@ public class MyHttpInterceptor extends HandlerInterceptorAdapter {
         }
 
         // 其他拦截请求（请求必须都带上用户id）
+
         String userId = request.getParameter("userId");
-        if (userId != null) {
+        if (userId == null) {
             return true;
         } else {
             this.output(response, "{\n"

@@ -48,6 +48,16 @@
         </filter>
     </appender>
 
+    <!-- 异步日志配置 -->
+    <appender name="async_file" class="ch.qos.logback.classic.AsyncAppender"
+              immediateFlush="false" neverBlock="true">
+        <!-- 不丢失日志模式 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 队列大小，默认256 -->
+        <queueSize>1024</queueSize>
+        <appender-ref ref="console" />
+    </appender>
+
     <logger name="logback"/>
     <logger name="cn.dhc.logon.controller" level="error" additivity="true">
         <appender-ref ref="console"/>

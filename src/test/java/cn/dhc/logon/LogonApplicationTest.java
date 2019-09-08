@@ -50,7 +50,7 @@ public class LogonApplicationTest {
     @Test
     public void testFindPerson() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/main/person/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/index/info")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
