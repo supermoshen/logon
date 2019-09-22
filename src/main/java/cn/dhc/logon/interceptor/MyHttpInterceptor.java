@@ -29,17 +29,16 @@ public class MyHttpInterceptor extends HandlerInterceptorAdapter {
         StringBuilder queryString = new StringBuilder();
         //remove last blank
         Map<String, String[]> params = request.getParameterMap();
-        for (String key : params.keySet()) {
-            String[] values = params.get(key);
-            for (String value : values) {
+        params.forEach((key, value1) -> {
+            for (String value : value1) {
                 queryString.append(key);
                 queryString.append("=");
                 queryString.append(value);
                 queryString.append("&");
             }
-        }
+        });
         String string = queryString.toString();
-        string = "".equals(queryString.toString()) ? null : string.substring(0, string.length() - 1);
+        string = "".equals(queryString.toString()) ? null : string;
         log.info(String.format("请求参数, url: %s, method: %s, params: %s", url, method, string));
 
         if (EXPECT_PATH.equals(uri)) {

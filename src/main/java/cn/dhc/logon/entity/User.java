@@ -1,6 +1,7 @@
 package cn.dhc.logon.entity;
 
 
+import cn.dhc.logon.emun.Status;
 import lombok.Data;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -34,5 +35,8 @@ public class User implements Serializable {
     @Column(name = "update_time")
     @LastModifiedDate
     private Date updateTime;
+
+    @Column(name = "status")
+    private Status userStatus;
 
 }
